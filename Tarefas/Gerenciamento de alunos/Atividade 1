@@ -32,7 +32,7 @@ def editar_aluno(alunos):
             nome = input("Digite o novo nome do aluno: ")
             curso = input("Digite o novo curso do aluno: ")
             notas = []
-            for i in range(3):
+            for i in range(4):
                 nota = float(input(f"Digite a nova nota {i+1} do aluno: "))
                 notas.append(nota)
             aluno["nome"] = nome
