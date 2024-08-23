@@ -8,7 +8,7 @@ valor_id = 0
 banco = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="0909",
+    password="",
     database="gerenciador_tarefas"
 )
 #Configuração da tela principal
@@ -77,7 +77,6 @@ def salvar_dados_editados():
     data_criacao = editar_tarefa.dateEdit.text()
     data_conclusao = editar_tarefa.dateEdit_2.text()
     autor = editar_tarefa.lineEdit_4.text()
-    print(descricao, autor)
     #Atulizar dados no banco
     cursor = banco.cursor()
     cursor.execute("UPDATE gerenciador_tarefas SET descricao = '{}', data_criacao = '{}', data_conclusao = '{}', autor = '{}' WHERE id = {}".format(descricao, data_criacao, data_conclusao, autor, valor_id))
