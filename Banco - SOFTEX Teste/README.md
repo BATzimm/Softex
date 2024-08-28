@@ -8,7 +8,7 @@ Projeto de sistema bancário desenvolvido em Python com banco de dados do MySQL,
 
 
 
-<VIDEO ID>(https://youtu.be/pQpFwH5KHvo)<VIDEO ID>
+[![Veja o vídeo](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)[https://youtu.be/pQpFwH5KHvo])
 
 
 
