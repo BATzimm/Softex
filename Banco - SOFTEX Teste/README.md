@@ -8,7 +8,7 @@ Projeto de sistema bancário desenvolvido em Python com banco de dados do MySQL,
 
 
 
-[![Veja o vídeo](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/pQpFwH5KHvo)
+Em breve.
 
 
 
@@ -18,7 +18,7 @@ Projeto de sistema bancário desenvolvido em Python com banco de dados do MySQL,
 
 ### Cadastro de Clientes 👤
 
-A função para registrar clientes, integra a janela interativa, `formulario.ui` com o banco de dados, o usuário deverá inserir o seu Nome, a Data atual e o Saldo (Caso não tenha saldo inicial, colocar 0). A tabela também conta com `ID`, mas o mesmo é gerado automaticamente. Após preencher os dados, o usuário deverá clicar em "Inserir" no menu interativo e as informações serão inseridas na tabela `dados`.
+A função para registrar clientes, integra a janela interativa, `formulario.ui` com o banco de dados, o usuário deverá inserir o seu Nome e o Saldo (Caso não tenha saldo inicial, colocar 0). A tabela também conta com `ID` e `Data_de_Criacao`, mas os mesmos são gerados automaticamente. Após preencher os dados, o usuário deverá clicar em "Inserir" no menu interativo e as informações serão inseridas na tabela `dados`.
 
 ### Listagem 📋
 

@@ -1,6 +1,7 @@
 import mysql.connector
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtCore import QDate
+from datetime import datetime
 
 valor_id = 0
 
@@ -15,18 +16,17 @@ banco = mysql.connector.connect(
 # Função para registrar clientes
 def funcao_principal():
     nome = formulario.lineEdit.text()
-    data_criacao = formulario.dateEdit.text()
+    data_criacao = datetime.now().strftime('%Y-%m-%d')  # Usando data atual
     saldo = formulario.lineEdit_4.text()
 
     cursor = banco.cursor()
-    comando_SQL = "INSERT INTO dados (nome, data_criacao, saldo ) VALUES (%s, %s, %s)"
+    comando_SQL = "INSERT INTO dados (nome, data_criacao, saldo) VALUES (%s, %s, %s)"
     dados = (nome, data_criacao, saldo)
     cursor.execute(comando_SQL, dados)
     banco.commit()
 
     # Limpar campos do formulário
     formulario.lineEdit.setText("")
-    formulario.dateEdit.setDate(QDate(2000, 1, 1))
     formulario.lineEdit_4.setText("")
 
 # Função para listar dados
@@ -57,7 +57,7 @@ def excluir_tarefa():
     cursor.execute("DELETE FROM dados WHERE id = %s", (id,))
     banco.commit()
 
-#Editar tarefa
+# Editar tarefa
 def chama_editar_tarefa():
     editar_tarefa.show()
     global valor_id
@@ -69,35 +69,41 @@ def chama_editar_tarefa():
     valor_id = dados_lidos[linha][0]
     cursor.execute("SELECT * FROM dados WHERE id="+ str(valor_id))
     tarefa = cursor.fetchall()
-#Salvar dados editados
+
+# Salvar dados editados
 def salvar_dados_editados():
-    #Pega o id
+    # Pega o id
     global valor_id
-    #Integração com o aplicativo
+    # Integração com o aplicativo
     nome = editar_tarefa.lineEdit.text()
-    data_criacao = editar_tarefa.dateEdit.text()
+    data_criacao = datetime.now().strftime('%Y-%m-%d')  # Usando data atual
     saldo = editar_tarefa.lineEdit_4.text()
-    #Atualizar dados no banco
+    # Atualizar dados no banco
     cursor = banco.cursor()
-    cursor.execute("UPDATE dados SET nome = '{}', data_criacao = '{}' , saldo = '{}' WHERE id = {}".format(nome, data_criacao, saldo, valor_id))
+    cursor.execute("UPDATE dados SET nome = %s, data_criacao = %s, saldo = %s WHERE id = %s", 
+                   (nome, data_criacao, saldo, valor_id))
     banco.commit()
-    #Atualizar dados na listagem
+    # Atualizar dados na listagem
     editar_tarefa.close()
     segunda_tela.close()
     chama_segunda_tela()
-#Configuração da tela de saque e depósito
+
+# Configuração da tela de saque e depósito
 def chama_carteira():
     carteira.show()
+
 # Função para realizar saque e depósito e atualizar a tabela de extrato
 def realizar_operacao():
     try:
         id_usuario = carteira.lineEdit.text()
         valor = float(carteira.lineEdit_2.text())
 
-        if not valor:
-            raise ValueError("Valor inválido")
+        if valor <= 0:
+            raise ValueError("O valor deve ser maior que zero")
 
         cursor = banco.cursor()
+        
+        # Verificar se o ID do usuário existe na tabela dados
         cursor.execute("SELECT saldo, nome, data_criacao FROM dados WHERE id = %s", (id_usuario,))
         resultado = cursor.fetchone()
 
@@ -130,6 +136,12 @@ def realizar_operacao():
 
     except ValueError as e:
         QtWidgets.QMessageBox.warning(carteira, "Erro", str(e))
+    except mysql.connector.Error as e:
+        QtWidgets.QMessageBox.warning(carteira, "Erro do Banco de Dados", str(e))
+    except Exception as e:
+        QtWidgets.QMessageBox.warning(carteira, "Erro", str(e))
+
+
 
 # Função para exibir extrato
 def chama_extrato():

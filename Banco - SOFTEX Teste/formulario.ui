@@ -63,38 +63,14 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Nome</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>31</x>
-      <y>213</y>
-      <width>197</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">
-color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Data de Criação:</string>
+     <string>Nome:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>260</y>
+      <y>230</y>
       <width>75</width>
       <height>29</height>
      </rect>
@@ -137,7 +113,7 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>260</y>
+      <y>220</y>
       <width>281</width>
       <height>35</height>
      </rect>
@@ -248,27 +224,6 @@ background-color: rgb(47, 35, 106);
     </property>
     <property name="text">
      <string>Carteira</string>
-    </property>
-   </widget>
-   <widget class="QDateEdit" name="dateEdit">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>210</y>
-      <width>161</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="displayFormat">
-     <string>yyyy-MM-dd</string>
     </property>
    </widget>
   </widget>
